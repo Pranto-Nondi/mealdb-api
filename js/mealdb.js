@@ -1,3 +1,4 @@
+// load Data
 const loadData = async (searchText) => {
     console.log(searchText);
     try {
@@ -13,7 +14,7 @@ const loadData = async (searchText) => {
         console.log(console.error)
     }
 }
-// display data
+// display every single meal 
 displayData = (meals) => {
     console.log(meals);
     const mealsContainer = document.getElementById("meals-container");
@@ -37,6 +38,8 @@ displayData = (meals) => {
     });
 
 }
+
+// every meal searchinput
 const searchMeal = () => {
     const searchMeal = document.getElementById("meal-input").value;
     console.log(searchMeal);
@@ -45,7 +48,7 @@ const searchMeal = () => {
 
 
 }
-
+//  search meal load
 const loadMeal = async (idMeal) => {
     console.log(idMeal);
     try {
@@ -60,7 +63,7 @@ const loadMeal = async (idMeal) => {
     }
 
 }
-
+// search meal bt ID detail display out
 const displayMealDetails = (meal) => {
 
     console.log(meal);
@@ -72,5 +75,5 @@ const displayMealDetails = (meal) => {
 
 }
 
-// loadData
+// loadData call
 loadData("chicken");
