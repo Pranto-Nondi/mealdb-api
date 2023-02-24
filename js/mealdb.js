@@ -56,6 +56,7 @@ const loadMeal = async (idMeal) => {
         console.log(url);
         const res = await fetch(url);
         const data = await res.json();
+        document.getElementById("meal-img").innerHTML = "";
         displayMealDetails(data.meals[0]);
     }
     catch (error) {
