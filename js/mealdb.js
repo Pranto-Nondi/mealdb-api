@@ -36,7 +36,14 @@ displayData = (meals) => {
     });
 
 }
+const searchMeal = () => {
+    const searchMeal = document.getElementById("meal-input").value;
+    console.log(searchMeal);
+    loadData(searchMeal);
 
+
+
+}
 
 const loadMeal = async (idMeal) => {
     console.log(idMeal);
