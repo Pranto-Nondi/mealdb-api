@@ -18,7 +18,7 @@ const loadData = async (searchText) => {
 displayData = (meals) => {
     console.log(meals);
     const mealsContainer = document.getElementById("meals-container");
-    mealsContainer.innerHTML = ""
+    mealsContainer.innerHTML = "";
     meals.forEach(meal => {
         console.log(meal);
         const everyMealDiv = document.createElement("div");
@@ -64,13 +64,13 @@ const loadMeal = async (idMeal) => {
 
 }
 // search meal bt ID detail display out
-const displayMealDetails = (meal) => {
 
+const displayMealDetails = (meal) => {
     console.log(meal);
     const mealImgDiv = document.getElementById("meal-img");
-    mealImgDiv.innerHTML = " ";
+    mealImgDiv.innerHTML = "";
     mealImgDiv.innerHTML = `
-    <figure><img class="w-72" src="${meal.strMealThumb}" alt="Shoes" /></figure>
+    <img class="w-72" src="${meal.strMealThumb}" alt="Shoes"/>
     `
 
 }
