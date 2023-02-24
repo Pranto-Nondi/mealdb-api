@@ -27,7 +27,7 @@ displayData = (meals) => {
                 <h2 class="card-title">${meal.strMeal}</h2>
                 <p>Click the button to watch on netflix app.</p>
               <div class="card-actions justify-end">
-              <label onclick="loadMeal()" id="meal-details" for="my-modal" class="btn">Details</label>
+              <label onclick="loadMeal(${meal.idMeal})" id="meal-details" for="my-modal" class="btn">Details</label>
               </div>
             </div>
         </div>
@@ -38,8 +38,29 @@ displayData = (meals) => {
 }
 
 
-const loadMeal=()=>{
-    const mealDetails=document.getElementById("meal-details");
+const loadMeal = async (idMeal) => {
+    console.log(idMeal);
+    try {
+        const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+        console.log(url);
+        const res = await fetch(url);
+        const data = await res.json();
+        displayMealDetails(data.meals[0]);
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+}
+
+const displayMealDetails = (meal) => {
+
+    console.log(meal);
+    const mealImgDiv = document.getElementById("meal-img");
+    mealImgDiv.innerHTML = `
+    <figure><img class="w-72" src="${meal.strMealThumb}" alt="Shoes" /></figure>
+    `
+
 }
 
 // loadData
