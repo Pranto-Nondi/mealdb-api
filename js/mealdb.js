@@ -17,6 +17,7 @@ const loadData = async (searchText) => {
 displayData = (meals) => {
     console.log(meals);
     const mealsContainer = document.getElementById("meals-container");
+    mealsContainer.innerHTML = ""
     meals.forEach(meal => {
         console.log(meal);
         const everyMealDiv = document.createElement("div");
