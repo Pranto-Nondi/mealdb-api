@@ -65,6 +65,7 @@ const displayMealDetails = (meal) => {
 
     console.log(meal);
     const mealImgDiv = document.getElementById("meal-img");
+    mealImgDiv.innerHTML = " ";
     mealImgDiv.innerHTML = `
     <figure><img class="w-72" src="${meal.strMealThumb}" alt="Shoes" /></figure>
     `
