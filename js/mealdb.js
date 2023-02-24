@@ -12,9 +12,7 @@ const loadData = async (searchText) => {
     catch (eror) {
         console.log(console.error)
     }
-
 }
-
 // display data
 displayData = (meals) => {
     console.log(meals);
@@ -29,7 +27,7 @@ displayData = (meals) => {
                 <h2 class="card-title">${meal.strMeal}</h2>
                 <p>Click the button to watch on netflix app.</p>
               <div class="card-actions justify-end">
-                <button class="btn btn-primary">Details</button>
+              <label onclick="loadMeal()" id="meal-details" for="my-modal" class="btn">Details</label>
               </div>
             </div>
         </div>
@@ -37,7 +35,11 @@ displayData = (meals) => {
         mealsContainer.appendChild(everyMealDiv);
     });
 
+}
 
+
+const loadMeal=()=>{
+    const mealDetails=document.getElementById("meal-details");
 }
 
 // loadData
