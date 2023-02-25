@@ -8,7 +8,7 @@ const loadData = async (searchText) => {
         const res = await fetch(url);
         const data = await res.json();
         console.log(data.meals);
-
+        loading.classList.remove("hidden");
         displayData(data.meals.slice(0, 6));
 
     }
@@ -18,6 +18,7 @@ const loadData = async (searchText) => {
 }
 // display every single meal 
 displayData = (meals) => {
+    loading.classList.add("hidden");
     console.log(meals);
     const mealsContainer = document.getElementById("meals-container");
     mealsContainer.innerHTML = "";
@@ -83,7 +84,10 @@ const showAll = () => {
     const searchMeal = document.getElementById("meal-input").value;
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
-        .then(data => displayData(data.meals))
+        .then(data => {
+            loading.classList.remove("hidden");
+            displayData(data.meals)
+        })
 }
 
 
