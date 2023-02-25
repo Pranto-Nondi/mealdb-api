@@ -54,12 +54,12 @@ const searchMeal = () => {
 //  search meal load
 const loadMeal = async (idMeal) => {
     console.log(idMeal);
+    document.getElementById("meal-img").innerHTML = "";
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
         console.log(url);
         const res = await fetch(url);
         const data = await res.json();
-        document.getElementById("meal-img").innerHTML = "";
         displayMealDetails(data.meals[0]);
     }
     catch (error) {
@@ -71,6 +71,7 @@ const loadMeal = async (idMeal) => {
 
 const displayMealDetails = (meal) => {
     console.log(meal);
+
     const mealImgDiv = document.getElementById("meal-img");
     mealImgDiv.innerHTML = "";
     mealImgDiv.innerHTML = `
@@ -78,6 +79,9 @@ const displayMealDetails = (meal) => {
     `
 
 }
+
+
+
 
 // show all
 const showAll = () => {

@@ -45,6 +45,7 @@
         </section>
         <!-- launcher modal -->
         <section>
+
             <input type="checkbox" id="my-modal" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box w-96 ">
@@ -52,6 +53,7 @@
                         <div>
                             <h3 class="font-bold text-lg ">Meal details!</h3>
                             <div id="meal-img">
+                                <h2 id="loading" class="text-center hidden">loading...</h2>
                             </div>
                             <div class="modal-action">
                                 <label for="my-modal" class="btn">More Info!</label>
@@ -60,9 +62,10 @@
                     </div>
                 </div>
             </div>
+
         </section>
         <!-- show all -->
-        <section>
+        <section id="launcher-modal">
             <div class=" flex justify-center align-middle mt-3 mb-5 mx-auto ">
                 <div>
                     <button id="show-all-btn" onclick="showAll()" class="btn btn-wide">Show ALL</button>
