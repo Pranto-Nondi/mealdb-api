@@ -1,4 +1,5 @@
 // load Data
+const loading = document.getElementById("loading");
 const loadData = async (searchText) => {
     console.log(searchText);
     try {
@@ -7,7 +8,8 @@ const loadData = async (searchText) => {
         const res = await fetch(url);
         const data = await res.json();
         console.log(data.meals);
-        displayData(data.meals);
+
+        displayData(data.meals.slice(0, 6));
 
     }
     catch (eror) {
@@ -75,6 +77,19 @@ const displayMealDetails = (meal) => {
     `
 
 }
+
+// show all
+const showAll = () => {
+    const searchMeal = document.getElementById("meal-input").value;
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
+        .then(res => res.json())
+        .then(data => displayData(data.meals))
+}
+
+
+
+
+
 
 // loadData call
 loadData("chicken");
