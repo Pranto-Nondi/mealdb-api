@@ -2,15 +2,15 @@
 const loading = document.getElementById("loading");
 const loadData = async (searchText) => {
     console.log(searchText);
+    loading.classList.remove("hidden");
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
         console.log(url);
         const res = await fetch(url);
         const data = await res.json();
         console.log(data.meals);
-        loading.classList.remove("hidden");
-        displayData(data.meals.slice(0, 6));
 
+        displayData(data.meals.slice(0, 6));
     }
     catch (eror) {
         console.log(console.error)
@@ -82,10 +82,11 @@ const displayMealDetails = (meal) => {
 // show all
 const showAll = () => {
     const searchMeal = document.getElementById("meal-input").value;
+    loading.classList.remove("hidden");
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
         .then(data => {
-            loading.classList.remove("hidden");
+
             displayData(data.meals)
         })
 }
