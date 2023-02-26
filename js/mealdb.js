@@ -1,8 +1,9 @@
-
+const mealsContainer = document.getElementById("meals-container");
+const noFoodFound = document.getElementById("found-no-result");
 const loading = document.getElementById("loading");
+const showAllBtn = document.getElementById("show-all-btn");
 // load Data
 const loadData = async (searchText) => {
-    console.log(searchText);
     console.log(searchText);
     loading.classList.remove("hidden");
     try {
@@ -12,18 +13,18 @@ const loadData = async (searchText) => {
         const data = await res.json();
         console.log(data.meals);
 
-        displayData(data.meals.slice(0, 6));
+        displayData(data.meals ? data.meals.slice(0, 6) : null);
     }
-    catch (eror) {
-        console.log(console.error)
+    catch (err) {
+        console.log(console.err)
     }
 }
 // display every single meal 
 displayData = (meals) => {
     loading.classList.add("hidden");
     console.log(meals);
-    const mealsContainer = document.getElementById("meals-container");
-    mealsContainer.innerHTML = "";
+
+    mealsContainer.textContent = "";
     meals.forEach(meal => {
         console.log(meal);
         const everyMealDiv = document.createElement("div");
@@ -40,7 +41,10 @@ displayData = (meals) => {
         </div>
         `
         mealsContainer.appendChild(everyMealDiv);
+
     });
+ document.getElementById("show-all-btn").classList.add("block")
+ document.getElementById("show-all-btn").classList.remove("hidden")
 
 }
 // enter key press display ui
