@@ -22,8 +22,14 @@ const loadData = async (searchText) => {
 // display every single meal 
 displayData = (meals) => {
     loading.classList.add("hidden");
-    console.log(meals);
-
+    // console.log(meals);
+    if (meals === null) {
+        noFoodFound.classList.remove("hidden");
+        document.getElementById("show-all-btn").classList.add("hidden");
+    }
+    else{
+        document.getElementById("show-all-btn").classList.remove("hidden");
+    }
     mealsContainer.textContent = "";
     meals.forEach(meal => {
         console.log(meal);
@@ -43,8 +49,9 @@ displayData = (meals) => {
         mealsContainer.appendChild(everyMealDiv);
 
     });
- document.getElementById("show-all-btn").classList.add("block")
- document.getElementById("show-all-btn").classList.remove("hidden")
+    //  document.getElementById("show-all-btn").classList.add("block");
+    //  document.getElementById("show-all-btn").classList.remove("hidden");
+    
 
 }
 // enter key press display ui
@@ -105,7 +112,8 @@ const displayMealDetails = (meal) => {
 // show all
 const showAll = () => {
     const searchMeal = document.getElementById("meal-input").value;
-    loading.classList.remove("hidden");
+    loading.classList.add("hidden");
+    document.getElementById("show-all-btn").classList.add("hidden");
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
         .then(data => {
