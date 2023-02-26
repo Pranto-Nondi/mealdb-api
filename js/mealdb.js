@@ -29,6 +29,7 @@ displayData = (meals) => {
     }
     else {
         toggoleBtn(true);
+        noFoodFound.classList.add("hidden");
     }
     mealsContainer.textContent = "";
     meals.forEach(meal => {
@@ -120,7 +121,7 @@ const displayMealDetails = (meal) => {
 const showAll = () => {
     const searchMeal = document.getElementById("meal-input").value;
     loading.classList.add("hidden");
-   
+
     // document.getElementById("show-all-btn").classList.add("hidden");
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
