@@ -25,10 +25,10 @@ displayData = (meals) => {
 
     if (meals === null) {
         noFoodFound.classList.remove("hidden");
-        document.getElementById("show-all-btn").classList.add("hidden");
+        toggoleBtn(false);
     }
     else {
-        document.getElementById("show-all-btn").classList.remove("hidden");
+        toggoleBtn(true);
     }
     mealsContainer.textContent = "";
     meals.forEach(meal => {
@@ -52,6 +52,17 @@ displayData = (meals) => {
 
 
 
+}
+
+
+const toggoleBtn = (isShow) => {
+    console.log('togoled');
+    if (isShow) {
+        document.getElementById("show-all-btn").classList.remove("hidden");
+    }
+    else {
+        document.getElementById("show-all-btn").classList.add("hidden");
+    }
 }
 // enter key press display ui
 document.getElementById("meal-input").addEventListener("keypress", function (e) {
@@ -109,7 +120,8 @@ const displayMealDetails = (meal) => {
 const showAll = () => {
     const searchMeal = document.getElementById("meal-input").value;
     loading.classList.add("hidden");
-    document.getElementById("show-all-btn").classList.add("hidden");
+   
+    // document.getElementById("show-all-btn").classList.add("hidden");
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
         .then(data => {
