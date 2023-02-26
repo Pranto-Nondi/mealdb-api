@@ -1,6 +1,8 @@
-// load Data
+
 const loading = document.getElementById("loading");
+// load Data
 const loadData = async (searchText) => {
+    console.log(searchText);
     console.log(searchText);
     loading.classList.remove("hidden");
     try {
@@ -41,12 +43,25 @@ displayData = (meals) => {
     });
 
 }
+// enter key press display ui
+document.getElementById("meal-input").addEventListener("keypress", function (e) {
+    console.log(e.key);
+    if (e.key === "Enter") {
+        mealInput();
+    }
+})
+
 
 // every meal searchinput
-const searchMeal = () => {
+
+const mealInput = () => {
     const searchMeal = document.getElementById("meal-input").value;
     console.log(searchMeal);
     loadData(searchMeal);
+}
+const mealSearch = () => {
+    mealInput();
+
 
 
 
@@ -67,7 +82,7 @@ const loadMeal = async (idMeal) => {
     }
 
 }
-// search meal bt ID detail display out
+// search meal by ID detail display out
 
 const displayMealDetails = (meal) => {
     console.log(meal);
@@ -90,7 +105,6 @@ const showAll = () => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`)
         .then(res => res.json())
         .then(data => {
-
             displayData(data.meals)
         })
 }
