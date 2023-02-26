@@ -4,7 +4,7 @@ const loading = document.getElementById("loading");
 const showAllBtn = document.getElementById("show-all-btn");
 // load Data
 const loadData = async (searchText) => {
-    console.log(searchText);
+
     loading.classList.remove("hidden");
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
@@ -22,12 +22,12 @@ const loadData = async (searchText) => {
 // display every single meal 
 displayData = (meals) => {
     loading.classList.add("hidden");
-    // console.log(meals);
+
     if (meals === null) {
         noFoodFound.classList.remove("hidden");
         document.getElementById("show-all-btn").classList.add("hidden");
     }
-    else{
+    else {
         document.getElementById("show-all-btn").classList.remove("hidden");
     }
     mealsContainer.textContent = "";
@@ -49,14 +49,13 @@ displayData = (meals) => {
         mealsContainer.appendChild(everyMealDiv);
 
     });
-    //  document.getElementById("show-all-btn").classList.add("block");
-    //  document.getElementById("show-all-btn").classList.remove("hidden");
-    
+
+
 
 }
 // enter key press display ui
 document.getElementById("meal-input").addEventListener("keypress", function (e) {
-    console.log(e.key);
+
     if (e.key === "Enter") {
         mealInput();
     }
@@ -67,19 +66,17 @@ document.getElementById("meal-input").addEventListener("keypress", function (e) 
 
 const mealInput = () => {
     const searchMeal = document.getElementById("meal-input").value;
-    console.log(searchMeal);
+
     loadData(searchMeal);
 }
 const mealSearch = () => {
     mealInput();
 
 
-
-
 }
 //  search meal load
 const loadMeal = async (idMeal) => {
-    console.log(idMeal);
+
     document.getElementById("meal-img").innerHTML = "";
     try {
         const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
@@ -96,7 +93,7 @@ const loadMeal = async (idMeal) => {
 // search meal by ID detail display out
 
 const displayMealDetails = (meal) => {
-    console.log(meal);
+
 
     const mealImgDiv = document.getElementById("meal-img");
     mealImgDiv.innerHTML = "";
@@ -105,7 +102,6 @@ const displayMealDetails = (meal) => {
     `
 
 }
-
 
 
 
@@ -120,8 +116,6 @@ const showAll = () => {
             displayData(data.meals)
         })
 }
-
-
 
 
 
